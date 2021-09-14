@@ -1,6 +1,6 @@
 
 postgres:
-  connection: user=tj password=sloth host=192.168.59.103 port=5432 sslmode=disable
+  connection: user=postgres password=postgres host=localhost port=5432 sslmode=disable
   table: logs
   column: log
   max_open_connections: 10
@@ -9,7 +9,7 @@ postgres:
 nsq:
   topic: logs
   channel: postgres_logger
-  nsqd: 192.168.59.103:4150
+  nsqd: localhost:4150
   max_attempts: 5
   msg_timeout: 15s
   max_in_flight: 300

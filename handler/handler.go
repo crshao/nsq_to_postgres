@@ -1,9 +1,12 @@
 package handler
 
-import "github.com/tj/nsq_to_postgres/client"
-import "github.com/segmentio/go-stats"
-import "github.com/bitly/go-nsq"
-import "time"
+import (
+	"time"
+
+	"github.com/crshao/nsq_to_postgres/client"
+	"github.com/nsqio/go-nsq"
+	"github.com/segmentio/go-stats"
+)
 
 // Handler.
 type Handler struct {

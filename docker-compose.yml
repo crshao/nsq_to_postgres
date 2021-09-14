@@ -1,6 +1,7 @@
 
 nsqd:
-  image: segment/nsqd
+  image: nsqio/nsq
+  command: /nsqd --broadcast-address=nsqd --lookupd-tcp-address=nsqlookupd:4160
   ports:
     - "4150:4150"
     - "4151:4151"
@@ -8,7 +9,8 @@ nsqd:
     - nsqlookupd
 
 nsqadmin:
-  image: segment/nsqadmin
+  image: nsqio/nsq
+  command: /nsqadmin --lookupd-http-address=nsqlookupd:4161
   ports:
     - "4171:4171"
   links:
@@ -16,7 +18,8 @@ nsqadmin:
     - nsqd
 
 nsqlookupd:
-  image: segment/nsqlookupd
+  image: nsqio/nsqlookupd
+  command: nsqlookupd
   ports:
     - "4160:4160"
     - "4161:4161"
@@ -26,5 +29,5 @@ postgres:
   ports:
     - "5432:5432"
   environment:
-    POSTGRES_PASSWORD: sloth
-    POSTGRES_USER: tj
+    POSTGRES_PASSWORD: postgres
+    POSTGRES_USER: postgres

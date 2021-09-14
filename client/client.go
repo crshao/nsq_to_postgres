@@ -1,9 +1,12 @@
 package client
 
-import "github.com/jmoiron/sqlx"
-import "github.com/lib/pq"
-import "fmt"
-import "log"
+import (
+	"fmt"
+	"log"
+
+	"github.com/jmoiron/sqlx"
+	"github.com/lib/pq"
+)
 
 // Client connection.
 type Client struct {

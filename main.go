@@ -1,13 +1,16 @@
 package main
 
-import "github.com/tj/nsq_to_postgres/handler"
-import "github.com/tj/nsq_to_postgres/client"
-import "github.com/segmentio/go-queue"
-import "github.com/tj/go-gracefully"
-import "github.com/tj/docopt"
-import "gopkg.in/yaml.v2"
-import "io/ioutil"
-import "log"
+import (
+	"io/ioutil"
+	"log"
+
+	"github.com/crshao/nsq_to_postgres/client"
+	"github.com/crshao/nsq_to_postgres/handler"
+	"github.com/segmentio/go-queue"
+	"github.com/tj/docopt"
+	"github.com/tj/go-gracefully"
+	"gopkg.in/yaml.v2"
+)
 
 var Version = "0.0.1"
 
@@ -80,6 +83,7 @@ func main() {
 	// Start consumer
 	log.Printf("starting consumer")
 	c.Start(handler.New(db))
+
 	gracefully.Shutdown()
 	log.Printf("stopping consumer")
 	c.Stop()
